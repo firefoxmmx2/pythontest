@@ -64,7 +64,6 @@ class ImageChar():
         gap = 5
         start = 0 
         for i in range(0,num):
-            char = RandomChar().gb2312()
             x = start + self.fontSize * i + random.randint(0,gap) + gap * i
             self.drawText((x,random.randint(-5,5)), RandomChar().gb2312(), self.randRBG())
             self.rotate()
@@ -74,6 +73,6 @@ class ImageChar():
         self.image.save(path)
         
 if __name__ == '__main__':
-    ic = ImageChar(fontColor=(100,211,90))
+    ic = ImageChar(fontColor=(100,211,90),size=(100,40))
     ic.randChinese(4)
     ic.save("1.jpeg")
