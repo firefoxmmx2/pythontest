@@ -25,8 +25,8 @@ def split(im):
     result = []
     w,h = im.size
     data = im.load()
-    xs = [0,23,57,77,106,135,159,179,205,228,w]
-    ys = [0,22,60,97,150,h]
+    xs = [9,37,70,104,138,170,202,231,261,294,324]
+    ys = [0,40,87,134,180,219]
     
     for i, x in enumerate(xs):
         if i+1 >= len(xs):
@@ -40,6 +40,7 @@ def split(im):
            
 def normalize_32_32(im,filename):
     '''切割图片'''
+    # TODO: 需要居中化,并且拓展为32x32像素的图片
     im.resize((32,32))
 #    im.show()
     im.save(filename)
