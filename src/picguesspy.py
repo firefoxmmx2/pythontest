@@ -37,15 +37,15 @@ def split(im):
             t = im.crop(box).copy()
             box = box + ((i+1) % 10,)
             result.append((normalize_32_32(t,'num_%d_%d_%d_%d_%d.bmp' % box),(i+1)%10))
-           
+#            raise Exception('test')
 def normalize_32_32(im,filename):
     '''切割图片'''
     # TODO: 需要居中化,并且拓展为32x32像素的图片
-    im.resize((32,32))
+    im = im.resize((32,32),Image.ANTIALIAS)
 #    im.show()
     im.save(filename)
     return im
 if __name__ == '__main__':
     im = Image.open('3.gif')
     im = conver_to_bw(im)
-    print(split(im))
+    split(im)
