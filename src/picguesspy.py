@@ -40,8 +40,18 @@ def split(im):
 #            raise Exception('test')
 def normalize_32_32(im,filename):
     '''切割图片'''
-    # TODO: 需要居中化,并且拓展为32x32像素的图片
+    #  需要居中化,并且拓展为32x32像素的图片
+    width,height = im.size
+    black_point = [(x,y) for x in range(width) \
+                    for y in range(height) \
+                    if im.getpixel((x,y)) == BLACK]
+    x_points,y_points = zip(*black_point)
+    min_x,min_y = min(x_points),min(y_points)
+    max_x,max_y = max(x_points),max(y_points)
+    box = (min_x-1,min_y-1,max_x+1,max_y+1)
+    im = im.crop(box)
     im = im.resize((32,32),Image.ANTIALIAS)
+    
 #    im.show()
     im.save(filename)
     return im
