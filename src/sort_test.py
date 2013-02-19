@@ -6,7 +6,7 @@ Created on 2013-1-24
 '''
 from abc import ABCMeta, abstractmethod
 
-class BaseSort:
+class BaseSort(object):
 	__metaclass__ = ABCMeta
 	
 	@abstractmethod
