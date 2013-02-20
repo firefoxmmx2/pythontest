@@ -62,6 +62,40 @@ class Shell(BaseSort): #希尔排序
 						break
 			h = h/3
 
+class Merge(BaseSort):
+	'''归并排序'''
+	def merge(self,array,lo,mid,hi):
+		#将array[lo..mid]和array[mid+1..hi] 归并
+		i = lo
+		j = mid+1
+		print "range(lo,hi+1) = ",range(lo,hi+1)
+		for k in range(lo,hi+1):
+			self.aux[k] = array[k]
+
+		for k in range(lo,hi+1):
+			if i > mid: 
+				array[k] = self.aux[j]
+				j += 1	
+			elif j > hi:
+				array[k] = self.aux[i]
+				i += 1	
+			elif self.less(self.aux[j],self.aux[i]):
+				array[k] = self.aux[j]
+				j += 1	
+			else:
+				array[k] = self.aux[i]
+				i += 1	
+	def sort(self,array):
+		self.aux = [None for i in range(10)]
+		self._sort(array,0,len(array)-1)
+	def _sort(self,array,lo,hi):
+		if hi <= lo: return
+		mid = lo+(hi-lo)/2
+		self._sort(array,lo,mid)
+		self._sort(array,mid+1,hi)
+		
+		self.merge(array,lo,mid,hi)
+	
 if __name__ == '__main__':
 	selection1 = Selection()
 	array = [s for s in 'helloworld']
@@ -75,4 +109,9 @@ if __name__ == '__main__':
 	shell1 = Shell()
 	shell1.sort(array)
 	print(array)
+	array = [s for s in 'MERGESORTEXAMPLE']
+	merge = Merge()
+	merge.sort(array)
+	print(array)
+
 
