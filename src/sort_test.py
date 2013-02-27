@@ -69,6 +69,7 @@ class Merge(BaseSort):
 		i = lo
 		j = mid+1
 		print "range(lo,hi+1) = ",range(lo,hi+1)
+		print "self.aux = ",self.aux
 		for k in range(lo,hi+1):
 			self.aux[k] = array[k]
 
@@ -86,7 +87,7 @@ class Merge(BaseSort):
 				array[k] = self.aux[i]
 				i += 1	
 	def sort(self,array):
-		self.aux = [None for i in range(10)]
+		self.aux = [None for i in range(len(array))]
 		self._sort(array,0,len(array)-1)
 	def _sort(self,array,lo,hi):
 		if hi <= lo: return
