@@ -50,8 +50,7 @@ def normalize_32_32(im,filename):
     max_x,max_y = max(x_points),max(y_points)
     box = (min_x-1,min_y-1,max_x+1,max_y+1)
     im = im.crop(box)
-    im = im.resize((32,32),Image.ANTIALIAS)
-    
+    im = im.resize((32,32),Image.ANTIALIAS)   
 #    im.show()
     im.save(filename)
     return im
